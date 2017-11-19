@@ -7,9 +7,11 @@
 	<body>
 		@include('layouts._header')
 
-		@yield('content')
+		<div class="container">
+			@yield('content')
 
-		@include('layouts._footer')
-		<script src="/js/app.js">
+			@include('layouts._footer')
+		</div>
+		<script src="/js/app.js"></script>
 	</body>
 </html>

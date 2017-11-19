@@ -1,9 +1,27 @@
-
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
-@import "variables";
-
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+body{
+	padding-top: 90px;
+	background-image: url(https://ooo.0o0.ooo/2016/06/20/5768c606cf9cb.jpg);
+}
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:active {text-decoration:none;}
+
+/* header */
+.navbar-form{
+	margin-left: 30px;
+}
+.navbar-right{
+	margin-right: 30px;
+}
+
+/* home */
+.home{
+	.list-group-item{
+		border-style: none;
+	}
+}
