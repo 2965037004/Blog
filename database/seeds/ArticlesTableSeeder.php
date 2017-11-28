@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Models\User;
+use App\Models\Article;
+
 class ArticlesTableSeeder extends Seeder
 {
     /**
@@ -11,6 +14,8 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $articles = factory(Article::class)->times(50)->make();
+
+        Article::insert($articles->toArray());
     }
 }
