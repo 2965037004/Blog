@@ -14,14 +14,10 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
         DB::table('Tags')->insert([
-            ['tag'=>'']
-            工具
-            解决方案
-            知识理论
-            工作方法
-
-
-
+            ['tag'=>'工具'],
+            ['tag'=>'解决方案'],
+            ['tag'=>'知识理论'],
+            ['tag'=>'工作方法'],
         ]);
     }
 }
