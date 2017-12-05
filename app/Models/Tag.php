@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Post;
+
 class Tag extends Model
 {
-    public function belongsToManyArticle()
+    public function belongsToManyPost()
     {
-        return $this->belongsToMany('Article','article_tag','tag_id','article_id');
+        return $this->belongsToMany(Post::class)->withtimestemp();
     }
 }

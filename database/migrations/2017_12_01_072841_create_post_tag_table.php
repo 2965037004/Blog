@@ -15,8 +15,8 @@ class CreatePostTagTable extends Migration
     {
         Schema::create('post_tag', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id');
-            $table->integer('tag_id');
+            $table->integer('post_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
             $table->timestamps();
             //post_id字段作为外键
             $table->foreign('post_id')
@@ -40,10 +40,10 @@ class CreatePostTagTable extends Migration
      */
     public function down()
     {
-        Schema::table('post_tag',function(Blueprint $table){
-            $table->dorpForeign('post_tag_post_id_foreign')
-            $table->dorpForeign('post_tag_tag_id_foreign')
-        })
+        Schema::table('post_tag', function(Blueprint $table){
+            $table->dropForeign('post_tag_post_id_foreign');
+            $table->dropForeign('post_tag_tag_id_foreign');
+        });
         Schema::dropIfExists('post_tag');
     }
 }

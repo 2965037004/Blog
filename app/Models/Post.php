@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Tag;
+
 class Post extends Model
 {
     //  post-categor : many-one

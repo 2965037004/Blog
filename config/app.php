@@ -177,6 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //  laravel-debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,
+        //  barryvdh/laravel-ide-helper
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*
@@ -226,6 +230,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        //  laravel-debugbar
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        //
     ],
 
 ];

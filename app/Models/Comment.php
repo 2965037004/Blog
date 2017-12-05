@@ -1,9 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Post;
+
+/**
+ * App\Models\Comment
+ *
+ * @property-read \App\Models\Post $post
+ * @mixin \Eloquent
+ */
 class Comment extends Model
 {
     //  comment-post : many-one

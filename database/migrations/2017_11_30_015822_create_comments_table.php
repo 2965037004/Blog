@@ -40,8 +40,8 @@ class CreateCommentsTable extends Migration
     public function down()
     {
         //删除表时要删除外键约束，参数为外键名称
-        Schema::table('comments', function(Blueprint $tabel){
-            $tabel->dropForeign('comments_post_id_foreign');
+        Schema::table('comments', function(Blueprint $table){
+            $table->dropForeign('comments_post_id_foreign');
         });
         Schema::dropIfExists('comments');
     }
