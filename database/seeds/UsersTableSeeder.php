@@ -11,6 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $users = factory(App\Models\User::class)->times(10)->make();
+        App\Models\User::insert($users->makeVisible('password','remember_token')->toArray());
     }
 }

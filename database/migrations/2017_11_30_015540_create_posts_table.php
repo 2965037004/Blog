@@ -17,7 +17,6 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned()->comment('外键');
             $table->string('title')->comment('标题');
-            $table->string('slug')->unique()->index()->comment('锚点');
             $table->string('summary')->comment('概要');
             $table->text('content')->comment('内容');
             $table->text('origin')->comment('文章来源');

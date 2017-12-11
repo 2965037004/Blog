@@ -11,6 +11,8 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //factory(App\Models\Category::class,5)->create()->
+        $categories = factory(App\Models\Category::class)->times(10)->make();
+
+        App\Models\Category::insert($categories->toArray());
     }
 }

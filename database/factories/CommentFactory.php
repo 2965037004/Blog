@@ -2,7 +2,8 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Comment::class, function (Faker $faker) {
+    $date_time = $faker->date . '' . $faker->time;
     return [
         'post_id' => function () {
              return factory(App\Models\Post::class)->create()->id;
@@ -13,5 +14,7 @@ $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
         'email' => $faker->safeEmail,
         'blog' => $faker->word,
         'content' => $faker->text,
+        'created_at' => $date_time,
+        'updated_at' => $date_time,
     ];
 });

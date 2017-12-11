@@ -11,6 +11,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $posts = factory(App\Models\Post::class)->times(100)->make();
+        App\Models\Post::insert($posts->toArray());
     }
 }
