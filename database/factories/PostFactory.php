@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\DB;
 
 $factory->define(App\Models\Post::class, function (Faker $faker) {
     $date_time = $faker->date . '' . $faker->time;
+
     $category_ids = DB::table('categories')->pluck('id')->toArray();
-    //App\Models\category::lists('id')->toArray();
+
     return [
         'category_id' => $faker->randomElement($category_ids),
         'title' => $faker->word,
