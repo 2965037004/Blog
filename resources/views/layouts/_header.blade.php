@@ -25,15 +25,15 @@
 
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="搜索内容...">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">搜索</button>
       </form>
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ route('about') }}"><span class="glyphicon glyphicon-credit-card"> 关于</span></a></li>
-		<li><a href="#"><span class="glyphicon glyphicon-user"> 登录</span></a></li>
 
+        @if(Auth::check())
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -44,7 +44,9 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </li>
-
+        @else
+        <li><a href="{{ route('sessions.create') }}"><span class="glyphicon glyphicon-user"> 登录</span></a></li>
+        @endif
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
