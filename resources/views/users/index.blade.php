@@ -16,6 +16,7 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td><a href="">删除</a></td>
+                <td><a href="">查看</a></td>
                 <td><a href="">修改</a></td>
             </tr>
             @endforeach
