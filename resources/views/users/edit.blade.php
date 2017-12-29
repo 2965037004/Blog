@@ -15,12 +15,12 @@
 
                 <div class="form-group">
                     <label for="name">用户名：</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                    <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                 </div>
 
                 <div class="form-group">
                     <label for="email">邮箱：</label>
-                    <input type="text" name="email" class="form-control" value="{{ old('email') }}" disabled>
+                    <input type="text" name="email" class="form-control" value="{{ $user->email }}" disabled>
                 </div>
 
                 <div class="form-group">

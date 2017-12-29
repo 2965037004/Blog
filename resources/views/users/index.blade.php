@@ -15,9 +15,24 @@
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td><a href="">删除</a></td>
-                <td><a href="">查看</a></td>
-                <td><a href="">修改</a></td>
+                <td>
+                    <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button class="btn btn-block btn-danger" type="submit" name="button">删除</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ route('users.show',$user->id) }}" method="GET">
+                        {{ csrf_field() }}
+                        <button class="btn btn-block btn-info" type="submit" name="button">查看</button>
+                    </form>
+                <td>
+                    <form action="{{ route('users.edit',$user->id) }}" method="GET">
+                        {{ csrf_field() }}
+                        <button class="btn btn-block btn-warning" type="submit" name="button">修改</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </table>

@@ -8,6 +8,16 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth',[
+            'except' => ['create','store'],
+        ]);
+        $this->middleware('guest',[
+            'only' => ['create','store'],
+        ]);
+    }
+
+
     public function index(){
         $users = User::paginate(10);
         return view('users.index',compact('users'));
@@ -39,14 +49,20 @@ class UsersController extends Controller
     }
 
     public function edit(User $user){
-        return view('users.edit',compact('user'))
+
+        $this->authorize('update',$user);
+
+        return view('users.edit',compact('user'));
     }
 
     public function update(Request $request,User $user){
+
         $this->validate($request,[
             'name'  =>  'required|unique:users|max:50',
             'password'  =>  'nullable|confirmed|min:6'
         ]);
+
+        $this->authorize('update',$user);
 
         $data = [];
         $data['name'] = $request->name;

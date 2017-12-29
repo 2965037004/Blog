@@ -42,7 +42,7 @@
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
-                            <form action="{{ route('sessions.destroy') }}" method="POST">
+                            <form action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-block btn-danger" type="submit" name="button">退出</button>
@@ -51,7 +51,7 @@
                     </ul>
                 </li>
                 @else
-                <li><a href="{{ route('sessions.create') }}"><span class="glyphicon glyphicon-user"> 登录</span></a></li>
+                <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"> 登录</span></a></li>
                 @endif
             </ul>
         </div><!-- /.navbar-collapse -->

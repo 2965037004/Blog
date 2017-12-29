@@ -36,7 +36,7 @@
             </form>
         </div>
         <div class="panel-fooding">
-            <a href="{{ route('sessions.create') }}"><-- &nbsp &nbsp 已有帐号,现在登录 &nbsp &nbsp --></a>
+            <a href="{{ route('login') }}"><-- &nbsp &nbsp 已有帐号,现在登录 &nbsp &nbsp --></a>
         </div>
     </div>
 </div>
