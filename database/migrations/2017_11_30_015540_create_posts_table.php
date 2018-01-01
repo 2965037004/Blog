@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned()->comment('外键');
+            $table->integer('user_id')->unsigned()->comment('外键');
             $table->string('title')->comment('标题');
             $table->string('summary')->comment('概要');
             $table->text('content')->comment('内容');
@@ -31,6 +32,11 @@ class CreatePostsTable extends Migration
                   ->on('categories')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
@@ -43,6 +49,7 @@ class CreatePostsTable extends Migration
     {
         Schema::table('posts', function(Blueprint $table){
             $table->dropForeign('posts_category_id_foreign');
+            $table->dropForeign('posts_user_id_foreign');
         });
         Schema::dropIfExists('posts');
     }

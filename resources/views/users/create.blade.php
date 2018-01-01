@@ -34,9 +34,11 @@
 
                 <button type="submit" class="btn btn-primary">注册</button>
             </form>
-        </div>
-        <div class="panel-fooding">
-            <a href="{{ route('login') }}"><-- &nbsp &nbsp 已有帐号,现在登录 &nbsp &nbsp --></a>
+
+
+            <hr>
+
+            <p>已有账号？<a href="{{ route('login') }}">现在登录！</a></p>
         </div>
     </div>
 </div>
