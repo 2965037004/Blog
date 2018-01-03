@@ -50,7 +50,7 @@
 					<a href="{{ route('home') }}"><h1>{{ $post->title }}</h1></a>
 				</li>
 				<li class="list-group-item">
-					<span class="glyphicon glyphicon-calendar"> {{ $post->created_at }} </span>
+					<span class="glyphicon glyphicon-calendar"> {{ $post->created_at->diffForHumans() }} </span>
 					&nbsp
 					<span class="glyphicon glyphicon-user"> {{ $post->user->name }} </span>
 					&nbsp
@@ -85,13 +85,8 @@
 				<div class="panel-body">
 					<ul class="list-group">
 						@foreach($favoriteCountPosts as $post)
-							{{ $post }}
 						<li class="list-group-item"><a href="#">{{ $post->title }}</a></li>
 						@endforeach
-						<li class="list-group-item"><a href="#">第二条</a></li>
-						<li class="list-group-item"><a href="#">第三条</a></li>
-						<li class="list-group-item"><a href="#">第四条</a></li>
-						<li class="list-group-item"><a href="#">第五条</a></li>
 					</ul>
 				</div>
 			</div>
@@ -103,7 +98,9 @@
 					文章分类
 				</div>
 				<div class="panel-body">
-					<a href="#"><span class="label label-default">分类</span></a>
+					@foreach($categories as $category)
+					<a href="#"><span class="label label-default">{{ $category->name }}</span></a>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -114,7 +111,9 @@
 					标签云
 				</div>
 				<div class="panel-body">
-					<a href="#"><span class="label label-info">标签</span></a>
+					@foreach($tags as $tag)
+					<a href="#"><span class="label label-info">{{ $tag->name }}</span></a>
+					@endforeach
 				</div>
 			</div>
 		</div>

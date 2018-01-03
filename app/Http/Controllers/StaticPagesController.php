@@ -6,19 +6,30 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Tag;
+use App\Models\Category;
 
 class StaticPagesController extends Controller
 {
     public function home()
 	{
-        $posts = Post::where('published','1')
+        $posts = Post::where('published',1)
                     ->orderBy('created_at','DESC')
                     ->with(['user','category','tags'])
                     ->paginate(10);
-        $favoriteCountPosts = Post::where('pulished','1')
-                                ->orderBy('favorite_count','ASC');
 
-		return view('static_pages/home',compact('posts','favoriteCountPosts'));
+        $favoriteCountPosts = Post::where('published',1)
+                                ->orderBy('favorite_count','DESC')
+                                ->limit(10)
+                                ->get();
+
+        $tags = Tag::orderBy('hot','DESC')->get();
+
+        $categories = Category::orderBy('hot','DESC')->get();
+
+        //return var_dump($favoriteCountPosts);
+
+		return view('static_pages/home',compact('posts','favoriteCountPosts','tags','categories'));
 	}
 
     public function about()
