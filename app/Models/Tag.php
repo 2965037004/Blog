@@ -24,7 +24,7 @@ use App\Models\Post;
  */
 class Tag extends Model
 {
-    public function belongsToManyPost()
+    public function Posts()
     {
         return $this->belongsToMany(Post::class);
     }

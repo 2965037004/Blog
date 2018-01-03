@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\Post;
 use App\Notifications\ResetPassword;
 
 /**
@@ -48,6 +49,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //  user-post : one-many
+    public function post()
+    {
+        return $this->hasMan('Post::class');
+    }
 
     public static function boot()
     {

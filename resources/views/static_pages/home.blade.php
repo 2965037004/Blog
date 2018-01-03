@@ -3,8 +3,9 @@
 @section('content')
 <div class="home">
 <div class="row">
+<!--
 	<div class="col-md-9">
-		<div class="article-list">
+		<div class="post-list">
 			<ul class="list-group">
 				<li class="list-group-item">
 					<a href="{{ route('home') }}"><h1>yarn镜像查看与修改</h1></a>
@@ -40,17 +41,53 @@
 			</ul>
 		</div>
 	</div>
+-->
+	<div class="col-md-9">
+		<div class="post-list">
+			@foreach($posts as $post)
+			<ul class="list-group">
+				<li class="list-group-item">
+					<a href="{{ route('home') }}"><h1>{{ $post->title }}</h1></a>
+				</li>
+				<li class="list-group-item">
+					<span class="glyphicon glyphicon-calendar"> {{ $post->created_at }} </span>
+					&nbsp
+					<span class="glyphicon glyphicon-user"> {{ $post->user->name }} </span>
+					&nbsp
+					<span class="glyphicon glyphicon-list"> <span class="label label-default">{{ $post->category->name }}</span></span>
+					<br />
+					<br />
+					<span class="glyphicon glyphicon-tags">
+						@foreach($post->tags as $tag)
+						<span class="label label-info">{{ $tag->name }}</span>
+						@endforeach
+					</span>
+				</li>
+				<li class="list-group-item">
+					{{ $post->content }}
+				</li>
+				<li class="list-group-item" style="text-align:right;">
+					<a href="#"><span class="glyphicon glyphicon-eye-open"> 阅读全文</span></a>
+				</li>
+			</ul>
+			@endforeach
+		</div>
+		{!! $posts->render() !!}
+	</div>
 
 	<div class="col-md-3">
 
-		<div class="article-last">
+		<div class="post-favorite_count">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					近期文章
+					热门文章
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#">第一条</a></li>
+						@foreach($favoriteCountPosts as $post)
+							{{ $post }}
+						<li class="list-group-item"><a href="#">{{ $post->title }}</a></li>
+						@endforeach
 						<li class="list-group-item"><a href="#">第二条</a></li>
 						<li class="list-group-item"><a href="#">第三条</a></li>
 						<li class="list-group-item"><a href="#">第四条</a></li>
@@ -60,7 +97,7 @@
 			</div>
 		</div>
 
-		<div class="article-category">
+		<div class="post-category">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					文章分类
@@ -71,7 +108,7 @@
 			</div>
 		</div>
 
-		<div class="article-tags">
+		<div class="post-tags">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					标签云

@@ -8,9 +8,11 @@ $factory->define(App\Models\Post::class, function (Faker $faker) {
     $date_time = $faker->date . '' . $faker->time;
 
     $category_ids = DB::table('categories')->pluck('id')->toArray();
+    $user_ids = DB::table('users')->pluck('id')->toArray();
 
     return [
         'category_id' => $faker->randomElement($category_ids),
+        'user_id' => $faker->randomElement($user_ids),
         'title' => $faker->word,
         'summary' => $faker->word,
         'content' => $faker->text,
