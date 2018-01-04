@@ -41,7 +41,7 @@
                         <li><a href="{{ route('users.edit',Auth::user()->id) }}">编辑资料</a></li>
                         @if(Auth::user()->is_admin)
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">用户列表</a></li>
+                        <li><a href="{{ route('users.index') }}">用户列表</a></li>
                         @endif
                         <li role="separator" class="divider"></li>
                         <li>
