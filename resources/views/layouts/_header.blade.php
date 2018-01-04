@@ -39,7 +39,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('users.show',Auth::user()->id) }}">个人中心</a></li>
                         <li><a href="{{ route('users.edit',Auth::user()->id) }}">编辑资料</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        @if(Auth::user()->is_admin)
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">用户列表</a></li>
+                        @endif
                         <li role="separator" class="divider"></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">

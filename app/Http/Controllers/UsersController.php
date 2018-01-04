@@ -12,7 +12,7 @@ class UsersController extends Controller
 {
     public function __construct(){
         $this->middleware('auth',[
-            'except' => ['create','store','confirmEmail'],
+            'except' => ['create','store','sendEmailConfirmationTo','confirmEmail'],
         ]);
         $this->middleware('guest',[
             'only' => ['create','store'],
@@ -21,8 +21,14 @@ class UsersController extends Controller
 
 
     public function index(){
-        $users = User::paginate(10);
-        return view('users.index',compact('users'));
+        if(Auth::user()->is_admin)
+        {
+            $users = User::paginate(10);
+            return view('users.index',compact('users'));
+        }else{
+            session()->flash('warning','您没有访问权限!');
+            return redirect('/');
+        }
     }
 
     public function show(User $user){

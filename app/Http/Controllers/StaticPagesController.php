@@ -16,16 +16,20 @@ class StaticPagesController extends Controller
         $posts = Post::where('published',1)
                     ->orderBy('created_at','DESC')
                     ->with(['user','category','tags'])
-                    ->paginate(10);
+                    ->paginate(5);
 
         $favoriteCountPosts = Post::where('published',1)
                                 ->orderBy('favorite_count','DESC')
-                                ->limit(10)
+                                ->limit(5)
                                 ->get();
 
-        $tags = Tag::orderBy('hot','DESC')->get();
+        $tags = Tag::orderBy('hot','DESC')
+                    ->limit(5)
+                    ->get();
 
-        $categories = Category::orderBy('hot','DESC')->get();
+        $categories = Category::orderBy('hot','DESC')
+                        ->limit(5)
+                        ->get();
 
         //return var_dump($favoriteCountPosts);
 
